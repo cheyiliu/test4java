@@ -5,8 +5,8 @@ import org.junit.Test;
 
 /**
  * from http://www.cnblogs.com/moonz-wu/archive/2011/01/11/1932473.html
- * http://www.importnew.com/6605.html Person class used as part of too many
- * 构建对象时
+ * http://www.importnew.com/6605.html
+ * http://blog.csdn.net/bboyfeiyu/article/details/24375481 构建对象时
  * ，如果碰到类有很多参数——其中很多参数类型相同而且很多参数可以为空时，我更喜欢Builder模式来完成。当参数数量不多、类型不同而且都是必须出现时
  * ，通过增加代码实现Builder往往无法体现它的优势
  * 。在这种情况下，理想的方法是调用传统的构造函数。再者，如果不需要保持不变，那么就使用无参构造函数调用相应的set方法吧。
