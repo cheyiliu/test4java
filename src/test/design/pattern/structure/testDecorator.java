@@ -1,5 +1,5 @@
 
-package test.design.pattern;
+package test.design.pattern.structure;
 
 import org.junit.Test;
 

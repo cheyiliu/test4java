@@ -1,5 +1,5 @@
 
-package test.design.pattern;
+package test.design.pattern.creation;
 
 /*
  * http://www.blogjava.net/kenzhh/archive/2011/09/02/357824.html
