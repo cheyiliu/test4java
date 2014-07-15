@@ -24,6 +24,22 @@ public class testDecorator {
         /** 边走路，边唱歌 */
         ConcreteDecoratorSing cds = new ConcreteDecoratorSing(component);
         cds.go();
+
+        // 来顿面条
+        IEateable noodles = new Noodles();
+        noodles.taste();
+
+        // 来顿好吃的鸡蛋面条
+        IEateable eggNoodles = new EggDecorator(noodles);
+        eggNoodles.taste();
+
+        // 来顿好吃的猪肉面条
+        IEateable porkNoodles = new PorkDecorator(noodles);
+        porkNoodles.taste();
+
+        // 来顿好吃的猪肉+鸡蛋面条
+        IEateable eggPorkNoodles = new PorkDecorator(eggNoodles);
+        eggPorkNoodles.taste();
     }
 }
 
@@ -92,5 +108,58 @@ class ConcreteDecoratorSing extends Decorator {
 
     private String sing() {
         return "唱歌";
+    }
+}
+
+interface IEateable {
+    public void taste();
+}
+
+class Noodles implements IEateable {
+
+    @Override
+    public void taste() {
+        System.out.println("有面条了， 好吃");
+    }
+
+}
+
+abstract class EateableDecorator implements IEateable {
+    private IEateable mEateable;
+
+    public EateableDecorator(IEateable eateable) {
+        mEateable = eateable;
+    }
+
+    @Override
+    public void taste() {
+        mEateable.taste();
+    }
+}
+
+class EggDecorator extends EateableDecorator {
+
+    public EggDecorator(IEateable eateable) {
+        super(eateable);
+    }
+
+    @Override
+    public void taste() {
+        super.taste();
+        System.out.println("有鸡蛋了， 好吃+1");
+    }
+
+}
+
+class PorkDecorator extends EateableDecorator {
+
+    public PorkDecorator(IEateable eateable) {
+        super(eateable);
+    }
+
+    @Override
+    public void taste() {
+        super.taste();
+        System.out.println("有猪肉了， 好吃+2");
     }
 }
