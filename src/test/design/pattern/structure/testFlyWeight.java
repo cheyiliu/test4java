@@ -17,7 +17,8 @@ import java.util.WeakHashMap;
 import org.junit.Test;
 
 /**
- * http://zh.wikipedia.org/zh/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F
+ * http://www.javaworld.com/article/2073632/build-ci-sdlc/make-your-apps-fly.
+ * html http://zh.wikipedia.org/zh/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F
  * http://langgufu.iteye.com/blog/2090516
  * 解释一下概念：也就是说在一个系统中如果有多个相同的对象，那么只共享一份就可以了
  * ，不必每个都去实例化一个对象。比如说一个文本系统，每个字母定一个对象，那么大小写字母一共就是52个
@@ -82,9 +83,30 @@ public class testFlyWeight {
 
     @Test
     public void test4() {
+        System.out.println("---------------===========----------------");
         FontData fontData1 = FontData.create(10, "楷体", Color.blue, FontEffect.BOLD);
         FontData fontData2 = FontData.create(10, "楷体", Color.blue, FontEffect.BOLD);
         assertEquals(fontData1, fontData2);
+    }
+
+    @Test
+    public void testString() {
+        System.out.println("---------------===========----------------");
+        String fly = "fly", weight = "weight";
+        String fly2 = "fly", weight2 = "weight";
+        System.out.println(fly == fly2); // fly and fly2 refer to the same
+                                         // String instance
+        System.out.println(weight == weight2); // weight and weight2 also refer
+                                               // to
+                                               // the same String instance
+        String distinctString = fly + weight;
+        System.out.println(distinctString == "flyweight"); // flyweight and
+                                                           // "flyweight" do not
+                                                           // refer to the same
+                                                           // instance
+        String flyweight = (fly + weight).intern();
+        System.out.println(flyweight == "flyweight"); // The intern() method
+                                                      // returns a flyweight
     }
 }
 
