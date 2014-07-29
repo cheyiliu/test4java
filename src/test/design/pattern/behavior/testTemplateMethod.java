@@ -165,3 +165,205 @@ class ConcreteMethodB extends AbstractMethod {
         return false;
     }
 }
+
+
+//
+//public abstract class RequestActivity extends FragmentActivity implements RequestBaseUi {
+//    protected static final String SAVED_STATE_REQUEST_LIST = "savedStateRequestList";
+//    protected ITVRequestManager mRequestManager = null;
+//    protected ArrayList<Request> mRequestList = null;
+//    protected boolean mContextDestroyed = false;
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(getContentViewId());
+//        initAllMembers(savedInstanceState);
+//        if (Utility.isNetworkAvailable(this)) {
+//            launchRequest(getInitialRequest());
+//            if (needShowLoadingIndicator()) {
+//                onLoadingIndicatorShow();
+//            }
+//        } else {
+//            handleException(EXCEPTION_TYPE_NETWORK);
+//        }
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        mContextDestroyed = true;
+//        super.onDestroy();
+//    }
+//
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        outState.putParcelableArrayList(SAVED_STATE_REQUEST_LIST, mRequestList);
+//    }
+//
+//    @Override
+//    public void initAllMembers(Bundle savedInstanceState) {
+//        mContextDestroyed = false;
+//        mRequestManager = ITVRequestManager.from(this);
+//
+//        if (savedInstanceState != null) {
+//            mRequestList = savedInstanceState.getParcelableArrayList(SAVED_STATE_REQUEST_LIST);
+//        }
+//        if (mRequestList == null) {
+//            mRequestList = new ArrayList<Request>();
+//        }
+//    }
+//
+//    @Override
+//    public void initLoader() {
+//
+//    }
+//
+//    public Request getInitialRequest() {
+//        return null;
+//    }
+//
+//    @Override
+//    public final void launchRequest(Request request) {
+//        if (request != null) {
+//            if (Utility.isNetworkAvailable(this)) {
+//                mRequestManager.execute(request, this);
+//                mRequestList.add(request);
+//                
+//                View errorIndicatorLayout = getErrorIndicatorLayout();
+//                if (errorIndicatorLayout != null && errorIndicatorLayout.getVisibility() == View.VISIBLE) {
+//                    errorIndicatorLayout.setVisibility(View.INVISIBLE);
+//                }
+//            } else {
+//                handleException(EXCEPTION_TYPE_NETWORK);
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public final void onRequestConnectionError(Request arg0, int arg1) {
+//        if (mRequestList.contains(arg0)) {
+//            mRequestList.remove(arg0);
+//        }
+//
+//        if (arg1 == -1) {
+//            handleException(EXCEPTION_TYPE_NETWORK);
+//        } else {
+//            handleException(EXCEPTION_TYPE_SERVER_RESPONSE_ERROR);
+//        }
+//    }
+//
+//    @Override
+//    public final void onRequestCustomError(Request arg0, Bundle arg1) {
+//        if (mRequestList.contains(arg0)) {
+//            mRequestList.remove(arg0);
+//        }
+//
+//        handleException(EXCEPTION_TYPE_CUSTOM_BASE);
+//    }
+//
+//    @Override
+//    public final void onRequestDataError(Request arg0) {
+//        if (mRequestList.contains(arg0)) {
+//            mRequestList.remove(arg0);
+//        }
+//
+//        handleException(EXCEPTION_TYPE_DATA);
+//    }
+//
+//    @Override
+//    public final void onRequestFinished(Request arg0, Bundle arg1) {
+//        if (mContextDestroyed) {
+//            return;
+//        }
+//
+//        if (mRequestList.contains(arg0)) {
+//            onLoadingIndicatorHide();
+//            initLoader();
+//            onRequestSucess(arg0, arg1);
+//            mRequestList.remove(arg0);
+//        }
+//    }
+//
+//    @Override
+//    public final void handleException(int exceptionType) {
+//        if (mContextDestroyed) {
+//            return;
+//        }
+//        onLoadingIndicatorHide();
+//        onRequestError(exceptionType);
+//    }
+//
+//    @Override
+//    public void onRequestSucess(Request request, Bundle bundle) {
+//
+//    }
+//
+//    @Override
+//    public void onRequestError(int exceptionType) {
+//        View errorIndicatorLayout = getErrorIndicatorLayout();
+//        TextView errorMsgTextView = getErrorMsgTextView();
+//        if (errorIndicatorLayout == null || errorMsgTextView == null) {
+//            return;
+//        }
+//
+//        switch (exceptionType) {
+//        case EXCEPTION_TYPE_NETWORK:
+//            errorMsgTextView.setText(R.string.tips_network_connect_error);
+//            errorIndicatorLayout.setVisibility(View.VISIBLE);
+//            break;
+//        case EXCEPTION_TYPE_DATA:
+//            errorMsgTextView.setText(R.string.tips_network_parse_error);
+//            errorIndicatorLayout.setVisibility(View.VISIBLE);
+//            break;
+//        case EXCEPTION_TYPE_SERVER_RESPONSE_ERROR:
+//            errorMsgTextView.setText(R.string.tips_server_response_error);
+//            errorIndicatorLayout.setVisibility(View.VISIBLE);
+//            break;
+//        case EXCEPTION_TYPE_EMPTY_RESULT:
+//            errorMsgTextView.setText(R.string.tips_no_related_information);
+//            errorIndicatorLayout.setVisibility(View.VISIBLE);
+//            break;
+//        default:
+//            break;
+//        }
+//    }
+//
+//    @Override
+//    public View getErrorIndicatorLayout() {
+//        return null;
+//    }
+//
+//    @Override
+//    public TextView getErrorMsgTextView() {
+//        return null;
+//    }
+//
+//    @Override
+//    public View getLoadingIndicatorView() {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean needShowLoadingIndicator() {
+//        return true;
+//    }
+//
+//    @Override
+//    public final void onLoadingIndicatorShow() {
+//        View view = getLoadingIndicatorView();
+//        if (view != null) {
+//            view.setVisibility(View.VISIBLE);
+//        }
+//    }
+//
+//    @Override
+//    public final void onLoadingIndicatorHide() {
+//        View view = getLoadingIndicatorView();
+//        if (view != null) {
+//            view.setVisibility(View.GONE);
+//        }
+//    }
+//}
+
