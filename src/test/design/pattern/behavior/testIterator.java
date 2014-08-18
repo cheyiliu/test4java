@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * http://blog.csdn.net/zhengzhb/article/details/7610745
  * http://alaric.iteye.com/blog/1978409 迭代器
  * (Iterator)模式：迭代器模式提供一种方法顺序一个聚合对象中各个元素，而又不暴露该对象内部表示。 迭代器模式由以下角色组成：
  * 迭代器角色(Iterator)：迭代器角色负责定义访问和遍历元素的接口。 具体迭代器角色(Concrete
