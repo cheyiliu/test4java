@@ -53,6 +53,13 @@ import java.util.concurrent.CountDownLatch;
  *                    public synchronized int increment() { return value++; } }
  * 
  */
+
+/**
+ * https://github.com/cheyiliu/All-in-One/wiki/volatile
+ * 
+ * @author housy
+ * 
+ */
 public class Test {
 
 	public static volatile int count = 0;
