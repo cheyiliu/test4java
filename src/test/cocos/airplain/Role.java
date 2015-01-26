@@ -15,7 +15,7 @@ public abstract class Role {
 	// 状态接口定义
 	public interface RoleState {
 
-		// 进入状态，可进行攻击力重计算，播放状态动画等
+		// 进入状态，可进行攻击力和生命值加成，播放状态动画等
 		public int onEnter();
 
 		// 退出状态，作相应清理
@@ -34,31 +34,80 @@ public abstract class Role {
 		public int cure(Role target);
 	}
 
+	// 提供一个默认的空的state
+	public class DefaultEmptyState implements RoleState {
+
+		@Override
+		public int onEnter() {
+			System.out.println(this + ", onEnter");
+			return 0;
+		}
+
+		@Override
+		public int onExit() {
+			System.out.println(this + ", onExit");
+			return 0;
+		}
+
+		@Override
+		public int gotHurt(int hurtHP) {
+			System.out.println(this + ", gotHurt, " + hurtHP);
+			return 0;
+		}
+
+		@Override
+		public int gotCure(int cureHP) {
+			System.out.println(this + ", gotCure, " + cureHP);
+			return 0;
+		}
+
+		@Override
+		public int atack(Role target) {
+			System.out.println(this + ", atack, " + target);
+			return 0;
+		}
+
+		@Override
+		public int cure(Role target) {
+			System.out.println(this + ", cure, " + target);
+			return 0;
+		}
+	}
+
 	// 角色阵营，是敌是友
 	protected Camp mCamp = Camp.CampBlue;
 
 	// 角色当前状态
 	protected RoleState mState = null;
 
-	// 血量，不随状态变化，故作为Role的成员比较合适
-	protected int mHP;
+	// 血量，不同状态下可调整血量取值
+	protected int mHP = 0;
 
-	// // 不同状态下，攻击力不一样，故放在状态比较合适
-	// int mTheAttackForce = 100;
+	// 攻击力，不同状态下可调整攻击取值
+	protected int mForce = 0;
 
 	// 构造
 	public Role() {
 	}
 
 	// 构造
-	public Role(Camp camp, RoleState state, int hp) {
+	public Role(Camp camp, RoleState state, int hp, int mForce) {
 		this.mCamp = camp;
 		this.mState = state;
 		this.mHP = hp;
+		this.mForce = mForce;
 	}
 
-	// set/get
+	// set/get mForce
+	public int getForce() {
+		return mForce;
+	}
 
+	public void setForce(int Force) {
+		this.mForce = Force;
+	}
+
+	// set/get mHP
 	public int getHP() {
 		return mHP;
 	}
@@ -67,6 +116,7 @@ public abstract class Role {
 		this.mHP = hp;
 	}
 
+	// set/get mCamp
 	public Camp getCamp() {
 		return mCamp;
 	}
@@ -75,6 +125,7 @@ public abstract class Role {
 		this.mCamp = camp;
 	}
 
+	// set/get mState
 	public RoleState getState() {
 		return mState;
 	}
@@ -82,9 +133,9 @@ public abstract class Role {
 	// 改变状态
 	public void setState(RoleState state) {
 		RoleState preState = mState;
+		preState.onExit();
 		mState = state;
 		mState.onEnter();
-		preState.onExit();
 	}
 
 	// 角色受伤

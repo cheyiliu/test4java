@@ -90,11 +90,13 @@ public class AirPlain extends Role {
 
 	}
 
-	public AirPlain(Camp camp, RoleState state, int hp) {
-		super(camp, state, hp);
-	}
-
-	public AirPlain() {
-//		super(Camp.CampBlue, new AirPlainStateNormal(mHP), Config.AirPlainLife_small);
-	}
+	// TODO
+	// public AirPlain(Camp camp, RoleState state, int hp) {
+	// super(camp, state, hp);
+	// }
+	//
+	// public AirPlain() {
+	// super(Camp.CampBlue, new AirPlainStateNormal(mHP),
+	// Config.AirPlainLife_small);
+	// }
 }
