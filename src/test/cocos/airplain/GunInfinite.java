@@ -1,7 +1,7 @@
 package test.cocos.airplain;
 
 
-public class Gun {
+public class GunInfinite {
 	public boolean fire(GamLayer layer, int x, int y) {
 
 		return true;

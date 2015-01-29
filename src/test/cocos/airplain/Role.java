@@ -7,7 +7,7 @@ public interface Role {
 
 	public void gotBlood(int blood);
 
-	public void gotGun(Gun gun);
+	public void gotGunDouble(Gun gun);
 
-	public void gotBomb(Gun gun);
+	public void gotGunSupper(Gun gun);
 }

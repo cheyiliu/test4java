@@ -1,5 +1,6 @@
 package test.cocos.airplain;
 
+
 public class DirectorVice {
 	private GamLayer mGamLayer;
 	private static DirectorVice sDirectorVice;
