@@ -5,15 +5,16 @@ public class AirPlain implements Role {
 	Gun mGun;
 	Gun mBomb;
 	int mHP;
+	final int MAX_HP = 100;
 
 	@Override
 	public void attack(Role target) {
 		int x = 10;
 		int y = 10;
-		if (!mGun.fire(LevelManager.getGamLayer(), x, y)) {
+		if (!mGun.fire(GameLogic.getGamLayer(), x, y)) {
 			switchGun();
 		}
-		mGun.fire(LevelManager.getGamLayer(), x, y);
+		mGun.fire(GameLogic.getGamLayer(), x, y);
 	}
 
 	private void switchGun() {
@@ -31,6 +32,9 @@ public class AirPlain implements Role {
 	@Override
 	public void gotBlood(int blood) {
 		mHP += blood;
+		if (MAX_HP < mHP) {
+			mHP = MAX_HP;
+		}
 	}
 
 	@Override
@@ -38,6 +42,9 @@ public class AirPlain implements Role {
 		mGun = gun;
 	}
 
-
+	@Override
+	public void gotBomb(Gun gun) {
+		mBomb = gun;
+	}
 
 }

@@ -9,5 +9,5 @@ public interface Role {
 
 	public void gotGun(Gun gun);
 
-//	public void gotBomb(Gun gun);
+	public void gotBomb(Gun gun);
 }
