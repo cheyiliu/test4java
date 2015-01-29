@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Bullet {
 	public enum BulletType {
-		BulletTypeYellow, BulletTypeBlue
+		BulletTypeYellow, BulletTypeBlue, BulletTypeFullScreen
 	}
 
 	protected int mForce;

@@ -1,6 +1,6 @@
 package test.cocos.airplain;
 
-public class RoleEmemy extends Role {
+public abstract class RoleEmemy extends Role {
 
 	public RoleEmemy(RoleTeam mTeam, int mHP, int mForce, int mRes) {
 		super(mTeam, mHP, mForce, mRes);

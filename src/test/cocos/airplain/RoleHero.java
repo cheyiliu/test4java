@@ -33,8 +33,8 @@ public class RoleHero extends Role {
 		int y = 10;
 		if (!mGunCurrent.fire(DirectorVice.getInstance().getGamLayer(), x, y)) {
 			switchGunSingleInflite();
+			mGunCurrent.fire(DirectorVice.getInstance().getGamLayer(), x, y);
 		}
-		mGunCurrent.fire(DirectorVice.getInstance().getGamLayer(), x, y);
 	}
 
 	@Override

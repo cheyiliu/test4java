@@ -5,6 +5,10 @@ public abstract class Role {
 		RoleTeamHero, RoleTeamMonster
 	}
 
+	public enum RoleType {
+		RoleTypeHero, RoleTypeMonsterBig, RoleTypeMonsterSmall, RoleTypeMonsterMiddle
+	}
+
 	protected RoleTeam mTeam;
 	protected int mHP;
 	protected int mForce;
@@ -33,4 +37,18 @@ public abstract class Role {
 	public abstract void gotGunDouble(Gun gun);
 
 	public abstract void gotGunSupper(Gun gun);
+
+	public static Role createRole(RoleType type) {
+		if (RoleType.RoleTypeHero == type) {
+			return new RoleHero();
+		} else if (RoleType.RoleTypeMonsterBig == type) {
+			return new RoleEmemyBig();
+		} else if (RoleType.RoleTypeMonsterMiddle == type) {
+			return new RoleEmemyMiddle();
+		} else if (RoleType.RoleTypeMonsterSmall == type) {
+			return new RoleEmemySmall();
+		} else {
+			return null;
+		}
+	}
 }
