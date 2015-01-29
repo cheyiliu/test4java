@@ -28,5 +28,4 @@ public class Supply {
 			return null;
 		}
 	}
-
 }

@@ -1,7 +1,7 @@
 package test.cocos.airplain;
 
 public class DirectorScript {
-	// 管卡配置
+	// 关卡配置
 	class Level {
 		int level;
 		int enemyNum;

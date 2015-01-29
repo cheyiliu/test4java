@@ -1,13 +1,36 @@
 package test.cocos.airplain;
 
-public interface Role {
-	public void attack(Role target);
+public abstract class Role {
+	public enum RoleTeam {
+		RoleTeamHero, RoleTeamMonster
+	}
 
-	public void gotAttacked(int damage);
+	protected RoleTeam mTeam;
+	protected int mHP;
+	protected int mForce;
+	protected int mRes;
 
-	public void gotBlood(int blood);
+	public Role(RoleTeam mTeam, int mHP, int mForce, int mRes) {
+		this.mTeam = mTeam;
+		this.mHP = mHP;
+		this.mForce = mForce;
+		this.mRes = mRes;
+	}
 
-	public void gotGunDouble(Gun gun);
+	public boolean isFriend(Role target) {
+		if (target.mTeam == mTeam) {
+			return true;
+		}
+		return false;
+	}
 
-	public void gotGunSupper(Gun gun);
+	public abstract void attack(Role target);
+
+	public abstract void gotAttacked(int damage);
+
+	public abstract void gotBlood(int blood);
+
+	public abstract void gotGunDouble(Gun gun);
+
+	public abstract void gotGunSupper(Gun gun);
 }

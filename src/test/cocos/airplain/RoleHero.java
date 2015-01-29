@@ -1,39 +1,40 @@
 package test.cocos.airplain;
 
-public class RoleHero implements Role {
-	public enum Team {
-		TeamHero, TeamMonster, TeamMiddle
+public class RoleHero extends Role {
+	public RoleHero() {
+		super(RoleTeam.RoleTeamHero, 100, 100, 100);
 	}
 
-	public Team mTeam;
-	private Gun mDefaultGun;
-	private Gun mGun;
-	private Gun mBomb;
-	private int mHP;
+	private Gun mGunSingleInfinite;
+	private Gun mGunDouble;
+	private Gun mGunSupper;
+
+	private Gun mGunCurrent;
+
 	private final int MAX_HP = 100;
 
-	public boolean isFrient(RoleHero target){
-		if (target.mTeam == mTeam) {
-			return true;
-		}
-		return false;
+	public void switchGunSingleInflite() {
+		mGunCurrent = mGunSingleInfinite;
 	}
-	public void superAttack() {
-		mBomb.fire(DirectorVice.getInstance().getGamLayer(), 0, 0);
+
+	public void switchGunDouble() {
+		mGunCurrent = mGunDouble;
+	}
+
+	// 引爆全屏
+	public void attackSupper() {
+		mGunCurrent = mGunSupper;
 	}
 
 	@Override
 	public void attack(Role target) {
+
 		int x = 10;
 		int y = 10;
-		if (!mGun.fire(DirectorVice.getInstance().getGamLayer(), x, y)) {
-			switchGun();
+		if (!mGunCurrent.fire(DirectorVice.getInstance().getGamLayer(), x, y)) {
+			switchGunSingleInflite();
 		}
-		mGun.fire(DirectorVice.getInstance().getGamLayer(), x, y);
-	}
-
-	private void switchGun() {
-		mGun = mDefaultGun;
+		mGunCurrent.fire(DirectorVice.getInstance().getGamLayer(), x, y);
 	}
 
 	@Override
@@ -54,12 +55,12 @@ public class RoleHero implements Role {
 
 	@Override
 	public void gotGunDouble(Gun gun) {
-		mGun = gun;
+		mGunDouble = gun;
 	}
 
 	@Override
 	public void gotGunSupper(Gun gun) {
-		mBomb = gun;
+		mGunSupper = gun;
 	}
 
 }
