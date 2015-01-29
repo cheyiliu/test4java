@@ -1,102 +1,43 @@
 package test.cocos.airplain;
 
-public class AirPlain extends Role {
+public class AirPlain implements Role {
+	Gun mDefaultGun;
+	Gun mGun;
+	Gun mBomb;
+	int mHP;
 
-	// die state, just empty impl
-	public class AirPlainStateDie implements RoleState {
-		@Override
-		public int onEnter() {
-			System.out.println(this + ", onEnter");
-			return 0;
+	@Override
+	public void attack(Role target) {
+		int x = 10;
+		int y = 10;
+		if (!mGun.fire(LevelManager.getGamLayer(), x, y)) {
+			switchGun();
 		}
-
-		@Override
-		public int onExit() {
-			System.out.println(this + ", onExit");
-			return 0;
-		}
-
-		@Override
-		public int gotHurt(int hurtHP) {
-			System.out.println(this + ", gotHurt, " + hurtHP);
-			return 0;
-		}
-
-		@Override
-		public int gotCure(int cureHP) {
-			System.out.println(this + ", gotCure, " + cureHP);
-			return 0;
-		}
-
-		@Override
-		public int atack(Role target) {
-			System.out.println(this + ", atack, " + target);
-			return 0;
-		}
-
-		@Override
-		public int cure(Role target) {
-			System.out.println(this + ", cure, " + target);
-			return 0;
-		}
-
+		mGun.fire(LevelManager.getGamLayer(), x, y);
 	}
 
-	// normal状态
-	public class AirPlainStateNormal implements RoleState {
-		// 不同状态下，攻击力不一样，故放在状态比较合适
-		int mTheAttackForce = 100;
-
-		public AirPlainStateNormal(int mTheAttackForce) {
-			super();
-			this.mTheAttackForce = mTheAttackForce;
-		}
-
-		@Override
-		public int onEnter() {
-			System.out.println(this + ", onEnter");
-			return 0;
-		}
-
-		@Override
-		public int onExit() {
-			System.out.println(this + ", onExit");
-			return 0;
-		}
-
-		@Override
-		public int gotHurt(int hurtHP) {
-			System.out.println(this + ", gotHurt, " + hurtHP);
-			return 0;
-		}
-
-		@Override
-		public int gotCure(int cureHP) {
-			System.out.println(this + ", gotCure, " + cureHP);
-			return 0;
-		}
-
-		@Override
-		public int atack(Role target) {
-			System.out.println(this + ", atack, " + target);
-			return 0;
-		}
-
-		@Override
-		public int cure(Role target) {
-			System.out.println(this + ", cure, " + target);
-			return 0;
-		}
-
+	private void switchGun() {
+		mGun = mDefaultGun;
 	}
 
-	// TODO
-	// public AirPlain(Camp camp, RoleState state, int hp) {
-	// super(camp, state, hp);
-	// }
-	//
-	// public AirPlain() {
-	// super(Camp.CampBlue, new AirPlainStateNormal(mHP),
-	// Config.AirPlainLife_small);
-	// }
+	@Override
+	public void gotAttacked(int damage) {
+		mHP -= damage;
+		if (mHP <= 0) {
+			// die
+		}
+	}
+
+	@Override
+	public void gotBlood(int blood) {
+		mHP += blood;
+	}
+
+	@Override
+	public void gotGun(Gun gun) {
+		mGun = gun;
+	}
+
+
+
 }
