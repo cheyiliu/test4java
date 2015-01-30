@@ -1,7 +1,10 @@
 package test.cocos.airplain;
 
+/**
+ * 负责招兵买马的副导演，负责安排出场顺序，负责驱动场上的逻辑-碰撞监测等。
+ */
 public class DirectorVice {
-	private GamLayer mGamLayer;
+	private GameLayer mGamLayer;
 	private static DirectorVice sDirectorVice;
 
 	private DirectorVice() {
@@ -14,7 +17,7 @@ public class DirectorVice {
 		return sDirectorVice;
 	}
 
-	public GamLayer getGamLayer() {
+	public GameLayer getGamLayer() {
 		return mGamLayer;
 	}
 

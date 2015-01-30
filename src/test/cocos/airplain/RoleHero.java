@@ -1,5 +1,8 @@
 package test.cocos.airplain;
 
+/**
+ * 英雄，属性有：多把枪用于远程攻击；增加超级攻击的方法；可以获得各种补给等；
+ */
 public class RoleHero extends Role {
 	public RoleHero() {
 		super(RoleTeam.RoleTeamHero, 100, 100, 100);

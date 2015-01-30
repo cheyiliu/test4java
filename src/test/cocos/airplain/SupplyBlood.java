@@ -1,13 +1,12 @@
 package test.cocos.airplain;
 
 /**
- * 
- * @author housy 补给血
+ * 补给血包
  */
 public class SupplyBlood extends Supply {
 	int mBlood;
 	int mRes;
-	
+
 	public SupplyBlood() {
 		this.mBlood = 100;
 		this.mRes = 100;

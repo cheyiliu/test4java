@@ -1,9 +1,7 @@
 package test.cocos.airplain;
 
 /**
- * 
- * @author housy 补给炸弹
- * 
+ * 补给，超级枪
  */
 public class SupplyGunSuper extends Supply {
 	GunSuper mGun;

@@ -1,9 +1,7 @@
 package test.cocos.airplain;
 
 /**
- * 
- * @author housy 补给枪
- * 
+ * 补给-双排子弹的枪
  */
 public class SupplyGunDouble extends Supply {
 	Gun mGun;

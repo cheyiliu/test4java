@@ -1,5 +1,8 @@
 package test.cocos.airplain;
 
+/**
+ * 补给类，定义了基本方法；和工厂方法
+ */
 public class Supply {
 	public enum SupplyType {
 		SupplyTypeBlood, SupplyTypeGunDouble, SupplyTypeGunSupper

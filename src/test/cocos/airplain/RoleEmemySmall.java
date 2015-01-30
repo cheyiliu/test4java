@@ -1,5 +1,8 @@
 package test.cocos.airplain;
 
+/**
+ * 小型敌人
+ */
 public class RoleEmemySmall extends RoleEmemy {
 
 	public RoleEmemySmall() {

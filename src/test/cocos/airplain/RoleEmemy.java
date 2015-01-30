@@ -1,5 +1,8 @@
 package test.cocos.airplain;
 
+/**
+ * 敌人：只能有攻击和被攻击行为
+ */
 public abstract class RoleEmemy extends Role {
 
 	public RoleEmemy(RoleTeam mTeam, int mHP, int mForce, int mRes) {

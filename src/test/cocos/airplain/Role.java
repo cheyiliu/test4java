@@ -1,5 +1,8 @@
 package test.cocos.airplain;
 
+/**
+ * 角色类定义，属性有：队伍，血量，攻击力，资源等； 行为有：判断是敌是友，攻击，被攻击，获得各种补给； 提供静态工厂方法
+ */
 public abstract class Role {
 	public enum RoleTeam {
 		RoleTeamHero, RoleTeamMonster

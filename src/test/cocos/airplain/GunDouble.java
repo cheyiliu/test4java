@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import test.cocos.airplain.Bullet.BulletType;
 
+/**
+ * 双排子弹的枪，一次发射两枚子弹
+ */
 public class GunDouble extends Gun {
 	private ArrayList<Bullet> mBullets;
 
@@ -12,7 +15,7 @@ public class GunDouble extends Gun {
 	}
 
 	@Override
-	public boolean fire(GamLayer layer, int x, int y) {
+	public boolean fire(GameLayer layer, int x, int y) {
 		int gap = 10;
 
 		int size = mBullets.size();
