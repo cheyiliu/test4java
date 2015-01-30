@@ -24,11 +24,6 @@ public class RoleHero extends Role {
 		mGunCurrent = mGunDouble;
 	}
 
-	// 引爆全屏
-	public void attackSupper() {
-		mGunCurrent = mGunSupper;
-	}
-
 	@Override
 	public void fire(Role target) {
 		// TODO Auto-generated method stub
