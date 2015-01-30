@@ -31,9 +31,16 @@ public abstract class Role {
 		return false;
 	}
 
+	// 开火
+	public abstract void fire(Role target);
+
+	// 大招-秒全屏
+	public abstract void fireSuper(Role target);
+
+	// 撞击
 	public abstract void attack(Role target);
 
-	public abstract void gotAttacked(int damage);
+	public abstract void gotDamaged(int damage);
 
 	public abstract void gotBlood(int blood);
 

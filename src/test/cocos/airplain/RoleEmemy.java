@@ -13,12 +13,12 @@ public abstract class RoleEmemy extends Role {
 	@Override
 	public void attack(Role target) {
 		if (!isFriend(target)) {
-			target.gotAttacked(mForce);
+			target.gotDamaged(mForce);
 		}
 	}
 
 	@Override
-	public void gotAttacked(int damage) {
+	public void gotDamaged(int damage) {
 		mHP -= damage;
 		if (mHP <= 0) {
 			// die
@@ -35,6 +35,14 @@ public abstract class RoleEmemy extends Role {
 
 	@Override
 	public void gotGunSupper(Gun gun) {
+	}
+
+	@Override
+	public void fire(Role target) {
+	}
+
+	@Override
+	public void fireSuper(Role target) {
 	}
 
 }

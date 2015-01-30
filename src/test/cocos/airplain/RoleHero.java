@@ -30,8 +30,8 @@ public class RoleHero extends Role {
 	}
 
 	@Override
-	public void attack(Role target) {
-
+	public void fire(Role target) {
+		// TODO Auto-generated method stub
 		int x = 10;
 		int y = 10;
 		if (!mGunCurrent.fire(DirectorVice.getInstance().getGamLayer(), x, y)) {
@@ -41,7 +41,17 @@ public class RoleHero extends Role {
 	}
 
 	@Override
-	public void gotAttacked(int damage) {
+	public void fireSuper(Role target) {
+		mGunSupper.fire(DirectorVice.getInstance().getGamLayer(), 0, 0);
+	}
+
+	@Override
+	public void attack(Role target) {
+		target.gotDamaged(mForce);
+	}
+
+	@Override
+	public void gotDamaged(int damage) {
 		mHP -= damage;
 		if (mHP <= 0) {
 			// die

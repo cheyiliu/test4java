@@ -24,7 +24,7 @@ public class Bullet {
 
 	// 杀伤目标
 	public void kill(Role target) {
-		target.gotAttacked(mForce);
+		target.gotDamaged(mForce);
 		// after kill, bullet die
 	}
 
